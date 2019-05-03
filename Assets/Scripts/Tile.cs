@@ -4,25 +4,22 @@ public class Tile : MonoBehaviour {
 
     [Header("Spawn config")]
     public int tier;
+    public float spawnChance;
+    public int startChance;
     public Biomes biome;
     public GameObject rs;
 
-    [Header("Spawn times")]
-    public float spawnWait;
-    public float spawnMaxWait;
-    public float spawnMinWait;
-
     private void Start() {
+        SpawnChance();
         tier = 1;
-        spawnWait = Random.Range(spawnMinWait, spawnMaxWait);
+    }
+    private void Update() {
+        SpawnChance();
     }
 
-    public void TimeBtwSpawn() {
-        if (spawnWait <= 0) {
-            spawnWait = Random.Range(spawnMinWait, spawnMaxWait);
-        } else {
-            spawnWait -= Time.deltaTime;
-        }
+    public void Tier() {
+    }
+    public void SpawnChance() {
     }
 }
 public enum Biomes { Grass, Desert, Winter, Graveyard, Fire };

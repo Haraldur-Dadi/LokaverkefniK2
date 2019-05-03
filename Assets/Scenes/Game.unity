@@ -5245,6 +5245,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   island: {fileID: 583793611}
   tiles: []
+  spawnWait: 0
+  spawnMaxWait: 0
+  spawnMinWait: 0
 --- !u!1001 &585777039
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14756,6 +14759,11 @@ PrefabInstance:
       propertyPath: staminaBar
       value: 
       objectReference: {fileID: 877286647}
+    - target: {fileID: 212699115550802086, guid: e9a62e0ea9f15cd45a2546457eddec2e,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 82
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9a62e0ea9f15cd45a2546457eddec2e, type: 3}
 --- !u!1001 &1662805132

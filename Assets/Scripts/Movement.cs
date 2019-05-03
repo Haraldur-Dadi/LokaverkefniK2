@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour {
 
+    public SpriteRenderOrderSystem[] playerParts;
+
     public float speed = 1;
     public float walkSpeed;
     public float sprintSpeed;
@@ -59,6 +61,9 @@ public class Movement : MonoBehaviour {
     }
 
     void MovePlayer() {
+        foreach (SpriteRenderOrderSystem part in playerParts) {
+            part.UpdateSorting();
+        }
         if (Input.GetKey(KeyCode.LeftShift) && Stamina.Instance.stamina > 0) {
             Stamina.Instance.resting = false;
             anim.SetBool("Running", true);
