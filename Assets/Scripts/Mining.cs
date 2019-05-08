@@ -10,25 +10,36 @@ public class Mining : MonoBehaviour {
     public CircleCollider2D miningDetector;
 
     public int miningHit = 1;
+    public float miningSpeed;
+    private float timeBtwMiningHit = 0;
     public float staminaUsed;
     public List<GameObject> minableRs = new List<GameObject>();
     public GameObject rsHit;
 
+    public Animator anim;
+
     private void Start() {
         miningDetector.radius = miningRange;
+        anim = GetComponent<Animator>();
     }
 
     private void Update() {
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
         RaycastHit2D hit2D = Physics2D.GetRayIntersection(ray, Mathf.Infinity, layerMask);
-        if (hit2D.collider != null) {
+        if (hit2D.collider != null && timeBtwMiningHit <= 0) {
             if (Input.GetMouseButtonDown(0)) {
                 rsHit = hit2D.transform.gameObject;
-                rsHit.GetComponent<Resource>().TakeDamage(miningHit);
-                Stamina.Instance.ReduceStamina(staminaUsed);
+                if (minableRs.Contains(rsHit)) {
+                    timeBtwMiningHit = miningSpeed;
+                    anim.SetBool("Mining", true);
+                    rsHit.GetComponent<Resource>().TakeDamage(miningHit);
+                    Stamina.Instance.ReduceStamina(staminaUsed);
+                }
             }
         }
+        timeBtwMiningHit -= Time.deltaTime;
+
     }
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.CompareTag("Rs") && !minableRs.Contains(other.gameObject)) {

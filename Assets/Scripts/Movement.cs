@@ -16,11 +16,6 @@ public class Movement : MonoBehaviour {
     private Rigidbody2D rb;
     private Vector3 change;
 
-    public Transform groundChecker;
-    Vector3 hitDir = new Vector3(0, 0, 1);
-    public float hitDistance;
-    public LayerMask layer;
-
     void Start() {
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
@@ -30,21 +25,12 @@ public class Movement : MonoBehaviour {
         change = Vector3.zero;
         change.x = Input.GetAxisRaw("Horizontal");
         change.y = Input.GetAxisRaw("Vertical");
+        change.Normalize();
 
         if (change.x > 0) {
             transform.localScale = new Vector3(-1, 1, 1);
         } else if (change.x < 0) {
             transform.localScale = new Vector3(1, 1, 1);
-        }
-
-        if (change.y > 0) {
-            Vector3 changePos = groundChecker.position;
-            changePos.y = transform.position.y - 0.3f;
-            groundChecker.position = changePos;
-        } else if (change.y < 0) {
-            Vector3 changePos = groundChecker.position;
-            changePos.y = transform.position.y - 0.5f;
-            groundChecker.position = changePos;
         }
 
         if (change != Vector3.zero) {

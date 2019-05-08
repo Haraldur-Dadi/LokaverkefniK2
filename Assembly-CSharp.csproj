@@ -62,12 +62,24 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\CameraFollow.cs" />
+    <Compile Include="Assets\Scripts\Cleaner.cs" />
+    <Compile Include="Assets\Scripts\Inventory\EquipmentManager.cs" />
+    <Compile Include="Assets\Scripts\Inventory\Inventory.cs" />
+    <Compile Include="Assets\Scripts\Inventory\InventorySlot.cs" />
+    <Compile Include="Assets\Scripts\Inventory\InventoryUI.cs" />
+    <Compile Include="Assets\Scripts\Inventory\Items\Armor.cs" />
+    <Compile Include="Assets\Scripts\Inventory\Items\Backpack.cs" />
+    <Compile Include="Assets\Scripts\Inventory\Items\Item.cs" />
+    <Compile Include="Assets\Scripts\Inventory\Items\Weapon.cs" />
     <Compile Include="Assets\Scripts\Island.cs" />
     <Compile Include="Assets\Scripts\Manager\GameManager.cs" />
+    <Compile Include="Assets\Scripts\Manager\MainCamera.cs" />
     <Compile Include="Assets\Scripts\Manager\RsSpawner.cs" />
     <Compile Include="Assets\Scripts\Manager\SpriteRenderOrderSystem.cs" />
+    <Compile Include="Assets\Scripts\Material.cs" />
     <Compile Include="Assets\Scripts\Mining.cs" />
+    <Compile Include="Assets\Scripts\MiningAnim.cs" />
+    <Compile Include="Assets\Scripts\MotherUI.cs" />
     <Compile Include="Assets\Scripts\Movement.cs" />
     <Compile Include="Assets\Scripts\Resource.cs" />
     <Compile Include="Assets\Scripts\Stamina.cs" />
