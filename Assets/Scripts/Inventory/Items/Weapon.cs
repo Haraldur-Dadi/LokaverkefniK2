@@ -4,7 +4,7 @@
 public class Weapon : Item {
 
     public WeaponSlotEnum equipSlot;
-    public WeaponType weaponType;
+    // public WeaponType weaponType;
     public int itemLvl;
     public Sprite weaponObject;
 
@@ -25,5 +25,5 @@ public class Weapon : Item {
     }
 }
 
-public enum WeaponSlotEnum { MainWeapon, SecondaryWeapon }
-public enum WeaponType { Axe, Dagger, Sword, Staff, Bow, Wand, Shield }
+public enum WeaponSlotEnum { MainWeapon, SecondaryWeapon, Pickaxe }
+// public enum WeaponType { Axe, Dagger, Sword, Staff, Bow, Wand, Shield }

@@ -4,11 +4,15 @@
 public class Item : ScriptableObject {
 
     new public string name = "New Item";
+    public string description;
     public Sprite icon = null;
     public ItemType itemType;
     public ItemRarity itemRarity;
     public ItemLooted itemLooted;
     public ItemUse itemUse;
+    public int stackAmount;
+
+    public InventorySlot slotEquipped;
 
     public virtual void Add() {
         Inventory.Instance.AddItem(this);
@@ -23,7 +27,7 @@ public class Item : ScriptableObject {
     }
 }
 
-public enum ItemType { Weapon, Armor, HealthReg, ManaReg, Material, Backpack }
+public enum ItemType { Weapon, Armor, Consumable, Material, Backpack }
 public enum ItemRarity {
     Poor, // #9d9d9d
     Common, // #ffffff
@@ -32,5 +36,5 @@ public enum ItemRarity {
     Epic, // #b048f8
     Legnedary, // #ff8000
 }
-public enum ItemLooted { Starter, Quest, Mobs, Chest }
-public enum ItemUse { Consume, Place, Equip, Discard }
+public enum ItemLooted { Starter, Quest, Mobs, Resources, Chest }
+public enum ItemUse { Consume, Place, Equip, Discard, None }

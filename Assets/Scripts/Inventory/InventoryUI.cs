@@ -18,6 +18,7 @@ public class InventoryUI : MonoBehaviour {
     }
     void Start() {
         Inventory.Instance.onItemChangedCallback += UpdateUI;
+        UpdateUI();
     }
 
     public void UpdateNumberOfSlots() {
@@ -34,10 +35,13 @@ public class InventoryUI : MonoBehaviour {
         slots = itemsParent.GetComponentsInChildren<InventorySlot>();
 
         for (int i = 0; i < slots.Length; i++) {
-            if (i < Inventory.Instance.inventory.Count)
-            {
-                slots[i].AddItem(Inventory.Instance.inventory[i]);
+            if(slots[i].itemStack > 1) {
+                slots[i].itemStackTxt.text = slots[i].itemStack.ToString();
             } else {
+                slots[i].itemStackTxt.text = "";
+            }
+
+            if (slots[i].item == null) {
                 slots[i].ClearSlot();
             }
         }

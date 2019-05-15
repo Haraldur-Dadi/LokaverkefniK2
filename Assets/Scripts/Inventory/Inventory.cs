@@ -20,14 +20,32 @@ public class Inventory : MonoBehaviour {
 
     public int inventorySpace;
 
-    public List<Item> inventory = new List<Item>();
+    public List<InventorySlot> inventory;
+
+    private void Start() {
+        foreach (InventorySlot slot in InventoryUI.Instance.slots) {
+            inventory.Add(slot);
+        }
+    }
 
     public bool AddItem(Item item) {
-        if (inventory.Count >= inventorySpace) {
+        bool itemAdded = false;
+
+        for (int i = 0; i < inventorySpace; i++) {
+            if(inventory[i].item == item && inventory[i].item.stackAmount >= (inventory[i].itemStack + 1) && !itemAdded) {
+                inventory[i].AddItem(item);
+                itemAdded = true;
+            } else if (inventory[i].item == null && !itemAdded) {
+                inventory[i].AddItem(item);
+                itemAdded = true;
+            }
+        }
+
+        if (!itemAdded) {
             Debug.Log("Not enough room");
             return false;
         }
-        inventory.Add(item);
+
         if (onItemChangedCallback != null) {
             onItemChangedCallback.Invoke();
         }
@@ -35,7 +53,7 @@ public class Inventory : MonoBehaviour {
     }
 
     public void RemoveItem(Item item) {
-        inventory.Remove(item);
+        item.slotEquipped.OnRemoveButton();
 
         if (onItemChangedCallback != null) {
             onItemChangedCallback.Invoke();

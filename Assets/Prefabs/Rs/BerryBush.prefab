@@ -154,14 +154,22 @@ MonoBehaviour:
   hpBarGO: {fileID: 6948154053037069347}
   hpBarSlider: {fileID: 971323957373765916}
   timeSinceLastHit: 0
-  hitFx: {fileID: 6236674893216398913, guid: cbd8e88ab13355b4ea3a6392b203e214, type: 3}
+  nrParticles: 1
+  particles:
+  - {fileID: 21300000, guid: cbdc4f2c29f958644af632f2aaae8678, type: 3}
+  - {fileID: 21300000, guid: 7651b8b17c6061c4696c760932cc3da2, type: 3}
+  hitFx: {fileID: 6236674893216398913, guid: 8d8f578c058969b46af34efcce8fdfa3, type: 3}
+  subhitFx: {fileID: 0}
+  backgroundHitFx: {fileID: 6236674893216398913, guid: cbd8e88ab13355b4ea3a6392b203e214,
+    type: 3}
   destroyedFx: {fileID: 6236674893216398913, guid: 52be67cd14cf50c408219e901eff052e,
     type: 3}
   fxOffset: {x: 0, y: 0.2, z: 0}
-  materialToDrop: {fileID: 0}
+  materialToDrop: {fileID: 3630932532813330521, guid: f0a1144d1f6893b4a80715f3fc759367,
+    type: 3}
   nrMaterialsToDrop: 0
-  maxDrop: 0
-  minDrop: 0
+  maxDrop: 5
+  minDrop: 2
 --- !u!114 &6746985871222286334
 MonoBehaviour:
   m_ObjectHideFlags: 0

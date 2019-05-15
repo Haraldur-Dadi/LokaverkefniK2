@@ -154,7 +154,13 @@ MonoBehaviour:
   hpBarGO: {fileID: 6166805823587628916}
   hpBarSlider: {fileID: 4072095788134574667}
   timeSinceLastHit: 0
-  hitFx: {fileID: 6236674893216398913, guid: cbd8e88ab13355b4ea3a6392b203e214, type: 3}
+  nrParticles: 1
+  particles:
+  - {fileID: 21300000, guid: 2ac9769e83d81184eaa0d4ce69a42440, type: 3}
+  - {fileID: 21300000, guid: c1951a69e741f8b488f9467d732046f0, type: 3}
+  hitFx: {fileID: 6236674893216398913, guid: 2c9509f51a326134384e4cd74830e987, type: 3}
+  backgroundHitFx: {fileID: 6236674893216398913, guid: cbd8e88ab13355b4ea3a6392b203e214,
+    type: 3}
   destroyedFx: {fileID: 6236674893216398913, guid: 52be67cd14cf50c408219e901eff052e,
     type: 3}
   fxOffset: {x: 0, y: 0.1, z: 0}
@@ -177,6 +183,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   offset: 0
   useSprite: 1
+  updateSorting: 0
 --- !u!1001 &3126384857462117187
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -293,16 +300,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 731128258125218770, guid: 1d3465ab609ec2c47937a99409af5736,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 731128258125218770, guid: 1d3465ab609ec2c47937a99409af5736,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d3465ab609ec2c47937a99409af5736, type: 3}

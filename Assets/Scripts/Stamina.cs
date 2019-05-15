@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using TMPro;
 
 public class Stamina : MonoBehaviour {
 
@@ -13,7 +14,9 @@ public class Stamina : MonoBehaviour {
     public float stamina;
     public float staminaRegen = 2;
     public float timeBtwStaminaRegen = 3;
+
     public Slider staminaBar;
+    public TextMeshProUGUI staminaPc;
 
     private void Awake() {
         if(Instance == null) {
@@ -25,9 +28,9 @@ public class Stamina : MonoBehaviour {
 
     private void Start() {
         stamina = maxStamina;
-        staminaBar.value = stamina / maxStamina;
-        startRecovery = true;
+        CalculateStaminaBar();
         resting = true;
+        startRecovery = true;
     }
     private void Update() {
         if (startRecovery) {
@@ -38,11 +41,20 @@ public class Stamina : MonoBehaviour {
 
     public void ReduceStamina(float staminaUsed) {
         stamina -= staminaUsed;
-        StaminaBar();
+        CalculateStaminaBar();
+    }
+    public void AddStamina(float staminaToAdd) {
+        if((stamina + staminaToAdd) >= maxStamina) {
+            stamina = maxStamina;
+        } else {
+            stamina += staminaToAdd;
+        }
+        CalculateStaminaBar();
     }
 
-    void StaminaBar() {
+    void CalculateStaminaBar() {
         staminaBar.value = stamina / maxStamina;
+        staminaPc.text = (staminaBar.value * 100).ToString() + "%";
     }
 
     IEnumerator GainStamina() {
@@ -50,7 +62,7 @@ public class Stamina : MonoBehaviour {
             startRecovery = false;
             if (stamina < maxStamina) {
                 stamina += staminaRegen;
-                StaminaBar();
+                CalculateStaminaBar();
             }
 
             yield return new WaitForSeconds(timeBtwStaminaRegen);

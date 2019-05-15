@@ -17,40 +17,32 @@ public class MotherUI : MonoBehaviour {
     void Update() {
         if (Input.GetButtonDown("MotherUI")) {
             motherUI.SetActive(!motherUI.activeSelf);
-            CanMove();
         }
         if (Input.GetButtonDown("Gear")) {
             motherUI.SetActive(!motherUI.activeSelf);
             Gear();
-            CanMove();
         }
         if (Input.GetButtonDown("Inventory")) {
             motherUI.SetActive(!motherUI.activeSelf);
             Inventory();
-            CanMove();
         }
         if (Input.GetButtonDown("Quest")) {
             motherUI.SetActive(!motherUI.activeSelf);
             Quest();
-            CanMove();
         }
         if(Input.GetButtonDown("Map")) {
             motherUI.SetActive(!motherUI.activeSelf);
             Map();
-            CanMove();
         }
         if (Input.GetButtonDown("Settings")) {
             motherUI.SetActive(!motherUI.activeSelf);
             Settings();
-            CanMove();
         }
-    }
 
-    void CanMove() {
-        if (motherUI.activeSelf == true) {
-            Movement.Instance.canMove = false;
+        if(motherUI.activeInHierarchy == true) {
+            GameManager.isPaused = true;
         } else {
-            Movement.Instance.canMove = true;
+            GameManager.isPaused = false;
         }
     }
 

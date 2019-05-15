@@ -5,9 +5,7 @@ public class Movement : MonoBehaviour {
 
     public static Movement Instance;
 
-    public SpriteRenderOrderSystem[] playerParts;
-
-    public bool canMove = true;
+    public bool isFacingLeft = true;
 
     public float speed = 1;
     public float walkSpeed;
@@ -34,17 +32,11 @@ public class Movement : MonoBehaviour {
     }
 
     void Update() {
-        if (canMove) {
+        if (!Health.Instance.dead) {
             change = Vector3.zero;
             change.x = Input.GetAxisRaw("Horizontal");
             change.y = Input.GetAxisRaw("Vertical");
             change.Normalize();
-
-            if (change.x > 0) {
-                transform.localScale = new Vector3(-1, 1, 1);
-            } else if (change.x < 0) {
-                transform.localScale = new Vector3(1, 1, 1);
-            }
 
             if (change != Vector3.zero) {
                 MovePlayer();
@@ -61,20 +53,24 @@ public class Movement : MonoBehaviour {
     }
 
     void MovePlayer() {
-        foreach (SpriteRenderOrderSystem part in playerParts) {
-            part.UpdateSorting();
-        }
         if (Input.GetKey(KeyCode.LeftShift) && Stamina.Instance.stamina > 0) {
             Stamina.Instance.resting = false;
             anim.SetBool("Running", true);
             anim.SetBool("Walking", false);
-            rb.MovePosition(transform.position + change * sprintSpeed * speed * Time.deltaTime);
+            rb.MovePosition(transform.position + change * sprintSpeed * speed * GameManager.DeltaTime);
             StartCoroutine(UseStamina());
         } else {
             sprinting = false;
             anim.SetBool("Walking", true);
             anim.SetBool("Running", false);
-            rb.MovePosition(transform.position + change * walkSpeed * speed * Time.deltaTime);
+            rb.MovePosition(transform.position + change * walkSpeed * speed * GameManager.DeltaTime);
+        }
+        if (change.x > 0) {
+            isFacingLeft = false;
+            transform.localScale = new Vector3(-1, 1, 0);
+        } else if (change.x < 0) {
+            isFacingLeft = true;
+            transform.localScale = new Vector3(1, 1, 0);
         }
     }
 

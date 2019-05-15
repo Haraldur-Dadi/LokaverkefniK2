@@ -26,6 +26,7 @@ public class Island : MonoBehaviour {
 
     private void Update() {
         tiles = GetComponentsInChildren<Tile>();
+        TimeBtwSpawn();
     }
 
     public void TimeBtwSpawn() {

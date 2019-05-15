@@ -29,7 +29,7 @@ public class SpriteRenderOrderSystem : MonoBehaviour {
 
             offset = particleSystemRenderer.sortingOrder;
 
-            particleSystemRenderer.sortingOrder = (int)((particleSystemRenderer.transform.position.y * -120) + offset);
+            particleSystemRenderer.sortingOrder = (int)((particleSystemRenderer.transform.position.y * -100) + offset);
         }
     }
 

@@ -140,7 +140,6 @@ public class EquipmentManager : MonoBehaviour {
     }
 
     public void UpdateInventorySpace() {
-        Debug.Log("Hello");
         int inventorySlots = 0;
         foreach (Backpack backpack in currentBackpacks) {
             if(backpack != null) {
